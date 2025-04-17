@@ -1,26 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prifina</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
 </head>
 <body>
-  <header>
-    <h1>Welcome to Prifina</h1>
-    <p>Your personal AI twin and data platform</p>
-  </header>
 
-  <main>
+  <main class="container">
+
+    <header>
+      <hgroup>
+        <h1>Welcome to Prifina</h1>
+        <p>Your personal AI twin and data platform</p>
+      </hgroup>
+      <nav>
+        <ul>
+          <li><strong>Prifina</strong></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
     <section>
-      <h2>About Us</h2>
-      <p>Prifina empowers individuals to control and use their personal data through AI twins.</p>
+      <h2>What is Prifina?</h2>
+      <p>
+        Prifina empowers individuals to take control of their personal data by creating AI twins that understand and represent them. These AI twins interact on your behalf — always under your control.
+      </p>
+      <a href="about.html" role="button">Learn More</a>
     </section>
+
+    <section>
+      <h2>Get Started</h2>
+      <p>
+        Whether you're an individual curious about AI twins, or a developer looking to build with personal data — Prifina has the tools for you.
+      </p>
+      <a href="https://www.prifina.com" target="_blank" role="button" class="secondary">Visit Prifina.com</a>
+    </section>
+
+    <footer>
+      <hr />
+      <p>&copy; 2025 Prifina. All rights reserved.</p>
+    </footer>
+
   </main>
 
-  <footer>
-    <p>&copy; 2025 Prifina</p>
-  </footer>
 </body>
 </html>
