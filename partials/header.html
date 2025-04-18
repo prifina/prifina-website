@@ -1,7 +1,7 @@
 <header class="site-header" id="site-header">
   <div class="container nav-wrapper">
     <a href="index.html" class="logo">
-      <img src="assets/prifina-logo-1.png" alt="Prifina" height="24" />
+      <img src="assets/prifina-logo-1.png" alt="Prifina" class="logo-img" />
     </a>
     <nav class="main-nav" id="main-nav">
       <ul>
@@ -20,7 +20,7 @@
 
 <style>
   .site-header {
-    position: fixed; /* Changed from sticky to fixed */
+    position: fixed;
     top: 0;
     width: 100%;
     background: #fff;
@@ -38,6 +38,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
+  }
+
+  .logo-img {
+    height: 24px; /* Set a fixed height for the logo */
   }
 
   .main-nav ul {
