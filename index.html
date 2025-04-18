@@ -5,43 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prifina</title>
 
-  <!-- Pico CSS from CDN -->
+  <!-- Base styles -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
-
-  <!-- Prifina overrides -->
   <link rel="stylesheet" href="assets/brand.css" />
 </head>
 <body>
 
-<main class="container">
+  <!-- Shared header -->
+  <div id="header-placeholder"></div>
 
-  <header>
-    <hgroup>
-      <h1>Welcome to Prifina</h1>
-      <p>Your personal AI twin and data platform</p>
-    </hgroup>
-    <nav>
-      <ul>
-        <li><strong>Prifina</strong></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Test hero section to verify brand.css -->
+  <!-- Hero Section -->
   <section class="hero">
     <h1>This is styled with Prifina brand.css</h1>
     <p>Now using your visual identity on top of Pico.</p>
     <button>Get Started</button>
   </section>
 
+  <!-- What is Prifina? -->
   <section>
     <h2>What is Prifina?</h2>
-    <p>Prifina is a personal AI twin platform where individuals own and control their data.</p>
+    <p>
+      Prifina empowers individuals to take control of their personal data by creating AI twins that understand and represent them. These AI twins interact on your behalf — always under your control.
+    </p>
+    <a href="about.html" role="button">Learn More</a>
   </section>
 
-</main>
+  <!-- CTA -->
+  <section>
+    <h2>Get Started</h2>
+    <p>
+      Whether you're an individual curious about AI twins, or a developer looking to build with personal data — Prifina has the tools for you.
+    </p>
+    <a href="https://www.prifina.com" target="_blank" role="button" class="secondary">Visit Prifina.com</a>
+  </section>
+
+  <!-- Shared footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Include partials -->
+  <script>
+    const includeHTML = async (id, url) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const res = await fetch(url);
+        if (res.ok) el.innerHTML = await res.text();
+      }
+    };
+
+    includeHTML("header-placeholder", "partials/header.html");
+    includeHTML("footer-placeholder", "partials/footer.html");
+  </script>
 
 </body>
 </html>
