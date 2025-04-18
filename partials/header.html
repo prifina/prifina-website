@@ -3,6 +3,7 @@
     <div class="container nav-wrapper">
       <a href="index.html" class="logo">
         <img src="assets/prifina-logo-1.png" alt="Prifina" class="logo-img" />
+        <span class="logo-text">AI Twin</span>
       </a>
       <nav class="main-nav desktop-nav" id="main-nav">
         <button class="close-menu" id="close-menu" aria-label="Close Menu">&times;</button>
@@ -10,7 +11,7 @@
           <li><a href="index.html">AI Twin</a></li>
           <li><a href="user-ownership.html">Ownership</a></li>
           <li><a href="for-groups.html">For Groups</a></li>
-          <li><a href="questions.html">FAQs</a></li>
+          <li><a href="faqs.html">FAQs</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -53,17 +54,30 @@
     margin: 0 auto;
   }
 
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .logo-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #2a2a2a;
+    font-size: 1.1rem;
+  }
+
   .logo-img {
-    height: 32px;
+    height: 28px;
     width: auto;
-    max-width: 160px;
     object-fit: contain;
     display: block;
   }
 
   .desktop-nav ul.wsite-menu-default {
     display: flex;
-    gap: 2.5rem;
+    gap: 3rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -74,8 +88,8 @@
     color: #2a2a2a;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 0.02em;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
     transition: color 0.2s ease;
   }
 
