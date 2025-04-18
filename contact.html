@@ -40,23 +40,26 @@
       const el = document.getElementById(id);
       if (el) {
         const res = await fetch(url);
-        if (res.ok) el.innerHTML = await res.text();
+        if (res.ok) {
+          el.innerHTML = await res.text();
+
+          // Apply active class after loading header
+          if (id === "header-placeholder") {
+            const path = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-link").forEach((link) => {
+              if (link.getAttribute("href") === path) {
+                link.classList.add("active");
+              }
+            });
+          }
+        }
       }
     };
 
     includeHTML("header-placeholder", "partials/header.html");
     includeHTML("footer-placeholder", "partials/footer.html");
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const path = window.location.pathname.split("/").pop();
-      const navLinks = document.querySelectorAll(".nav-link");
-      navLinks.forEach((link) => {
-        if (link.getAttribute("href") === path) {
-          link.classList.add("active");
-        }
-      });
-    });
-
+    // Form handler
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
 

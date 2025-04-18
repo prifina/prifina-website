@@ -22,14 +22,6 @@
     <p>
       Prifina empowers individuals to take control of their personal data by creating AI twins that understand and represent them.
     </p>
-    <a href="about.html" role="button">Learn More</a>
-  </section>
-
-  <section>
-    <h2>Get Started</h2>
-    <p>
-      Whether you're an individual curious about AI twins, or a developer looking to build with personal data — Prifina has the tools for you.
-    </p>
     <a href="https://www.prifina.com" target="_blank" role="button" class="secondary">Visit Prifina.com</a>
   </section>
 
@@ -40,23 +32,24 @@
       const el = document.getElementById(id);
       if (el) {
         const res = await fetch(url);
-        if (res.ok) el.innerHTML = await res.text();
+        if (res.ok) {
+          el.innerHTML = await res.text();
+
+          // Apply active class after loading header
+          if (id === "header-placeholder") {
+            const path = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-link").forEach((link) => {
+              if (link.getAttribute("href") === path) {
+                link.classList.add("active");
+              }
+            });
+          }
+        }
       }
     };
 
     includeHTML("header-placeholder", "partials/header.html");
     includeHTML("footer-placeholder", "partials/footer.html");
-
-    // Highlight current nav link
-    window.addEventListener("DOMContentLoaded", () => {
-      const path = window.location.pathname.split("/").pop();
-      const navLinks = document.querySelectorAll(".nav-link");
-      navLinks.forEach((link) => {
-        if (link.getAttribute("href") === path) {
-          link.classList.add("active");
-        }
-      });
-    });
   </script>
 
 </body>
