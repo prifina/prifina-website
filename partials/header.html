@@ -4,6 +4,7 @@
       <img src="assets/prifina-logo-1.png" alt="Prifina" class="logo-img" />
     </a>
     <nav class="main-nav" id="main-nav">
+      <button class="close-menu" id="close-menu" aria-label="Close Menu">&times;</button>
       <ul>
         <li><a href="product.html">Product</a></li>
         <li><a href="user-ownership.html">Ownership</a></li>
@@ -24,24 +25,31 @@
     top: 0;
     width: 100%;
     background: #fff;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
     z-index: 1000;
     border-bottom: 1px solid #eee;
+    padding: 2rem 0; /* Taller by default */
   }
 
   .site-header.shrink {
-    padding: 0.5rem 0;
+    padding: 0.75rem 0; /* Less tall when scrolled */
   }
 
   .nav-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
+    min-height: 48px;
   }
 
   .logo-img {
-    height: 24px; /* Set a fixed height for the logo */
+    height: 40px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    aspect-ratio: 5/1;
+    display: block;
   }
 
   .main-nav ul {
@@ -55,24 +63,48 @@
   .main-nav a {
     text-decoration: none;
     color: #000;
-    font-weight: 500;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .hamburger {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     background: none;
     border: none;
-    flex-direction: column;
-    gap: 4px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 0;
+    z-index: 1100;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
   }
 
   .hamburger span {
-    width: 20px;
-    height: 2px;
+    width: 28px;
+    height: 3px;
     background: #000;
     display: block;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  }
+
+  .hamburger.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   @media (max-width: 768px) {
@@ -82,12 +114,14 @@
       left: 0;
       right: 0;
       height: 100vh;
-      background: white;
+      background: #fff;
       transform: translateY(-100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(.4,0,.2,1);
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      z-index: 1050;
     }
 
     .main-nav.open {
@@ -96,11 +130,43 @@
 
     .main-nav ul {
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-nav a {
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
     }
 
     .hamburger {
       display: flex;
+      position: absolute;
+      right: 2rem;
+      top: 1.2rem;
+    }
+
+    .close-menu {
+      display: block;
+      position: absolute;
+      top: 1.2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      font-size: 2.5rem;
+      color: #000;
+      z-index: 1200;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .close-menu {
+      display: none;
     }
   }
 </style>
@@ -109,6 +175,7 @@
   const header = document.getElementById("site-header");
   const hamburger = document.getElementById("hamburger");
   const nav = document.getElementById("main-nav");
+  const closeMenu = document.getElementById("close-menu");
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 20) {
@@ -123,4 +190,12 @@
     hamburger.classList.toggle("open");
     hamburger.setAttribute("aria-label", nav.classList.contains("open") ? "Close menu" : "Menu");
   });
+
+  if (closeMenu) {
+    closeMenu.addEventListener("click", () => {
+      nav.classList.remove("open");
+      hamburger.classList.remove("open");
+      hamburger.setAttribute("aria-label", "Menu");
+    });
+  }
 </script>
