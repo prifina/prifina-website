@@ -69,4 +69,8 @@ body {
     color: inherit;
     text-decoration: underline;
   }
-  
+  /* Highlight active nav link */
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}

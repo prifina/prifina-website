@@ -4,17 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact – Prifina</title>
-
-  <!-- Base + Brand Styles -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
   <link rel="stylesheet" href="assets/brand.css" />
 </head>
 <body>
 
-  <!-- Shared header -->
   <div id="header-placeholder"></div>
 
-  <!-- Contact Section -->
   <main class="container">
     <section>
       <h2>Contact Us</h2>
@@ -37,10 +33,8 @@
     </section>
   </main>
 
-  <!-- Shared footer -->
   <div id="footer-placeholder"></div>
 
-  <!-- Partial loader -->
   <script>
     const includeHTML = async (id, url) => {
       const el = document.getElementById(id);
@@ -52,16 +46,22 @@
 
     includeHTML("header-placeholder", "partials/header.html");
     includeHTML("footer-placeholder", "partials/footer.html");
-  </script>
 
-  <!-- Form handler -->
-  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const path = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".nav-link");
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === path) {
+          link.classList.add("active");
+        }
+      });
+    });
+
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-
       const formData = new FormData(form);
 
       try {

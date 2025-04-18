@@ -4,33 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prifina</title>
-
-  <!-- Base styles -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
   <link rel="stylesheet" href="assets/brand.css" />
 </head>
 <body>
 
-  <!-- Shared header -->
   <div id="header-placeholder"></div>
 
-  <!-- Hero Section -->
   <section class="hero">
     <h1>This is styled with Prifina brand.css</h1>
     <p>Now using your visual identity on top of Pico.</p>
     <button>Get Started</button>
   </section>
 
-  <!-- What is Prifina? -->
   <section>
     <h2>What is Prifina?</h2>
     <p>
-      Prifina empowers individuals to take control of their personal data by creating AI twins that understand and represent them. These AI twins interact on your behalf — always under your control.
+      Prifina empowers individuals to take control of their personal data by creating AI twins that understand and represent them.
     </p>
     <a href="about.html" role="button">Learn More</a>
   </section>
 
-  <!-- CTA -->
   <section>
     <h2>Get Started</h2>
     <p>
@@ -39,10 +33,8 @@
     <a href="https://www.prifina.com" target="_blank" role="button" class="secondary">Visit Prifina.com</a>
   </section>
 
-  <!-- Shared footer -->
   <div id="footer-placeholder"></div>
 
-  <!-- Include partials -->
   <script>
     const includeHTML = async (id, url) => {
       const el = document.getElementById(id);
@@ -54,6 +46,17 @@
 
     includeHTML("header-placeholder", "partials/header.html");
     includeHTML("footer-placeholder", "partials/footer.html");
+
+    // Highlight current nav link
+    window.addEventListener("DOMContentLoaded", () => {
+      const path = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".nav-link");
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === path) {
+          link.classList.add("active");
+        }
+      });
+    });
   </script>
 
 </body>
