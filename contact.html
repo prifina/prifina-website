@@ -1,34 +1,76 @@
-<form id="contact-form">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required />
-  
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required />
-  
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-  
-    <button type="submit">Send</button>
-  </form>
-  
-  <p id="form-status"></p>
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – Prifina</title>
 
+  <!-- Base + Brand Styles -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
+  <link rel="stylesheet" href="assets/brand.css" />
+</head>
+<body>
+
+  <!-- Shared header -->
+  <div id="header-placeholder"></div>
+
+  <!-- Contact Section -->
+  <main class="container">
+    <section>
+      <h2>Contact Us</h2>
+      <p>Reach out if you're curious about AI twins, partnerships, or support.</p>
+
+      <form id="contact-form">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+
+      <p id="form-status"></p>
+    </section>
+  </main>
+
+  <!-- Shared footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Partial loader -->
+  <script>
+    const includeHTML = async (id, url) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const res = await fetch(url);
+        if (res.ok) el.innerHTML = await res.text();
+      }
+    };
+
+    includeHTML("header-placeholder", "partials/header.html");
+    includeHTML("footer-placeholder", "partials/footer.html");
+  </script>
+
+  <!-- Form handler -->
   <script>
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
-  
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-  
+
       const formData = new FormData(form);
-  
+
       try {
         const res = await fetch('https://script.google.com/macros/s/AKfycbzEa5EW5dqOgFHFejd1jA1wcXipmqIQKqvHDuKmn_FohjaTrK7WkC3x_Mz9qeUTtVpx/exec', {
           method: 'POST',
-          body: new URLSearchParams(formData) // change here
+          body: new URLSearchParams(formData)
         });
-  
-        const result = await res.json(); // Only if your script returns JSON
+
+        const result = await res.json();
         if (result.result === 'success') {
           status.textContent = 'Message sent successfully!';
           form.reset();
@@ -40,4 +82,6 @@
       }
     });
   </script>
-  
+
+</body>
+</html>
