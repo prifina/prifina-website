@@ -1,0 +1,48 @@
+<form id="contact-form">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+  
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+  
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  
+    <button type="submit">Send</button>
+  </form>
+  
+  <p id="form-status"></p>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+  
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+  
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        message: form.message.value
+      };
+  
+      try {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbzAX91gEfe8juc5EpJ9eZ9LTApZm7--oXcJiyyMOH1VhA2DMTuhvubGbPT4jyUm1kFrSg/exec', {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' }
+        });
+  
+        const result = await res.json();
+        if (result.result === 'success') {
+          status.textContent = 'Message sent successfully!';
+          form.reset();
+        } else {
+          status.textContent = 'Error sending message.';
+        }
+      } catch (err) {
+        status.textContent = 'There was a problem submitting the form.';
+      }
+    });
+  </script>
+  
