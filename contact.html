@@ -20,20 +20,15 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
   
-      const data = {
-        name: form.name.value,
-        email: form.email.value,
-        message: form.message.value
-      };
+      const formData = new FormData(form);
   
       try {
         const res = await fetch('https://script.google.com/macros/s/AKfycbxF5LQUTFM1NKgn3Nqb4DqfQJN7K8w2-Qr9sVUKKwCpUnd4x8Mi9uIIBaGb2X0Ie0KQ-w/exec', {
           method: 'POST',
-          body: JSON.stringify(data),
-          headers: { 'Content-Type': 'application/json' }
+          body: new URLSearchParams(formData) // change here
         });
   
-        const result = await res.json();
+        const result = await res.json(); // Only if your script returns JSON
         if (result.result === 'success') {
           status.textContent = 'Message sent successfully!';
           form.reset();
