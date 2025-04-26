@@ -1,0 +1,29 @@
+/* ===============================
+   Base Configuration
+   =============================== */
+   @import "base/variables";     // Variables (colors, spacing, fonts, etc.)
+   @import "base/breakpoints";   // Responsive breakpoints
+   @import "base/reset";         // Reset browser styles (to be created if needed)
+   @import "base/typography";    // Default heading and paragraph styles
+   @import "base/brand";         // Prifina brand-specific overrides
+   
+   /* ===============================
+      Layout Utilities
+      =============================== */
+   @import "layout/layout";      // Grid system, containers, spacing helpers
+   
+   /* ===============================
+      Section-Specific Styles
+      =============================== */
+   /* --- Global Sections --- */
+   @import "sections/global/header";   // Bedimcode navigation header
+   @import "sections/global/footer";   // Footer styling
+   
+   /* --- Reusable Sections --- */
+   @import "sections/reusable/hero-default";   // Default hero section
+   @import "sections/reusable/features";       // Feature blocks
+   
+   /* --- Template-Specific Sections --- */
+   @import "sections/templates/hero-home";     // Hero section for homepage
+   @import "sections/templates/contact-form";  // Contact form styling
+   

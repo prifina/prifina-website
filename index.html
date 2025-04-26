@@ -1,59 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="auto">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prifina</title>
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css" />
-  <link rel="stylesheet" href="assets/brand.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prifina - Empowering Personal AI Ownership</title>
+
+  <!-- Remixicon for header icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+
+  <!-- Main compiled CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
+  <!-- ================= Header ================= -->
   <div id="header-placeholder"></div>
 
-  <section class="hero">
-    <h1>This is styled with Prifina brand.css</h1>
-    <p>Now using your visual identity on top of Pico.</p>
-    <button class="btn-primary">Get Started</button>
+  <!-- ================= Main Content ================= -->
+  <main>
+    <section>
+      <h1>Welcome to Prifina!</h1>
+      <p>Own your data. Own your AI twin.</p>
+    </section>
+  </main>
 
-  </section>
-
-  <section>
-    <h2>What is Prifina?</h2>
-    <p>
-      Prifina empowers individuals to take control of their personal data by creating AI twins that understand and represent them.
-    </p>
-    <a href="https://www.prifina.com" target="_blank" role="button" class="secondary">Visit Prifina.com</a>
-  </section>
-  
-
+  <!-- ================= Footer ================= -->
   <div id="footer-placeholder"></div>
 
+  <!-- ================= Scripts ================= -->
+  <script src="assets/js/navigation.js"></script>
   <script>
-    const includeHTML = async (id, url) => {
-      const el = document.getElementById(id);
-      if (el) {
-        const res = await fetch(url);
-        if (res.ok) {
-          el.innerHTML = await res.text();
-
-          // Apply active class after loading header
-          if (id === "header-placeholder") {
-            const path = window.location.pathname.split("/").pop();
-            document.querySelectorAll(".nav-link").forEach((link) => {
-              if (link.getAttribute("href") === path) {
-                link.classList.add("active");
-              }
-            });
-          }
-        }
-      }
-    };
-
-    includeHTML("header-placeholder", "partials/header.html");
-    includeHTML("footer-placeholder", "partials/footer.html");
+    fetch('sections/global/header/header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+        initializeNavigation(); // <<< Run the function AFTER header is loaded
+      });
+  
+    fetch('sections/global/footer/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
   </script>
+  
 
 </body>
 </html>
