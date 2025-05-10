@@ -1,11 +1,43 @@
-/*=============== REUSABLE CSS CLASSES ===============*/
-.container {
+/*======================================
+  Layout Utilities and Base Resets
+======================================*/
+
+/*=============== BASE RESET ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /*=============== MAIN CONTENT SPACING ===============*/
+  main {
+    margin-top: 3.5rem; /* Push content below sticky header */
+  }
+  
+  /*=============== CONTAINER WRAPPER ===============*/
+  .container {
     max-width: 1120px;
     margin-inline: 1.5rem;
-}
-/* === Layout Defaults === */
-
-main {
-    margin-top: 3.5rem; // Push content below sticky header
+  }
+  
+  @media screen and (min-width: 1152px) {
+    .container {
+      margin-inline: auto;
+    }
   }
   
